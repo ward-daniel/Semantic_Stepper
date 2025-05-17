@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semantic Stepper</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Semantic Stepper</h1>
 
+  <div class="game-container">
+    <p><strong>Target Word:</strong> <span id="target-word">happiness</span></p>
+    <p><strong>Current Word:</strong> <span id="current-word">joy</span></p>
+
+    <input type="text" id="guess-input" placeholder="Enter a related word..." />
+    <button id="submit-btn">Step</button>
+
+    <div id="feedback"></div>
+
+    <h3>Chain</h3>
+    <ul id="chain-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

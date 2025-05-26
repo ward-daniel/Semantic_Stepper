@@ -1,40 +1,243 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  text-align: center;
-  padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.game-container {
-  max-width: 500px;
-  margin: auto;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container {
+    max-width: 1000px;
+    width: 100%;
 }
 
-input {
-  padding: 10px;
-  width: 70%;
-  margin-right: 5px;
+h2 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    user-select: none;
 }
 
-button {
-  padding: 10px 20px;
+.word-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    user-select: none;
 }
 
-#feedback {
-  margin-top: 15px;
-  font-weight: bold;
+.word {
+    background: #3498db;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    min-width: 80px;
+    cursor: default;
 }
 
-ul {
-  text-align: left;
-  padding-left: 0;
+.start-word {
+    background: #2980b9;
 }
 
-li {
-  list-style: none;
-  padding: 5px 0;
+.end-word {
+    background: #e67e22;
+    position: relative; /* ✅ make positioning of .score relative to this */
 }
+
+.chain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.drop-slot {
+    width: 100px;
+    height: 50px;
+    border: 2px dashed gray;
+    border-radius: 6px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #555;
+    user-select: none;
+    position: relative;
+}
+
+    .drop-slot.current {
+        border-color: black;
+    }
+
+    .drop-slot .score {
+        position: absolute;
+        bottom: -20px;
+        font-size: 14px;
+        color: #333;
+        user-select: none;
+    }
+
+    .drop-slot.drag-over {
+        border-color: #3498db;
+        background: #d0e7ff;
+    }
+
+.arrow {
+    font-size: 24px;
+    color: #333;
+    user-select: none;
+}
+
+.word-bank {
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+}
+
+#wordBankContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.word-bank-item {
+    background: #7f8c8d;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 6px;
+    cursor: grab;
+    user-select: none;
+    font-weight: 600;
+}
+
+    .word-bank-item:active {
+        cursor: grabbing;
+    }
+
+#submitBtn {
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+    #submitBtn:hover:not(:disabled) {
+        background-color: #0872F5
+    }
+
+    #submitBtn:disabled {
+        background-color: #bbb;
+        cursor: not-allowed;
+    }
+
+#retryBtn {
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #FF9E16;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+    margin-top: -60px;
+    margin-bottom: 60px;
+    margin-left: 900px;
+    transition: background-color 0.3s ease;
+}
+
+    #retryBtn:hover:not(:disabled) {
+        background-color: #FF6A00;
+    }
+
+    #retryBtn:disabled {
+        background-color: #dfe6e9;
+        color: #888;
+        cursor: not-allowed;
+    }
+
+#mainTitle {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+h2 {
+    text-align: center;
+    color: #555;
+}
+
+#scoreModal {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease;
+    z-index: 999;
+    padding: 30px 20px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+    #scoreModal.active {
+        bottom: 0;
+    }
+
+.modal-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+    .modal-content h2 {
+        font-size: 48px;
+        color: #000000;
+    }
+
+#finalScoreText {
+    font-size: 36px;
+    margin-top: 10px;
+    color: #000000;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.word-bank-item.used {
+    background: #bdc3c7 !important; /* gray background */
+    color: #7f8c8d !important; /* lighter text */
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.end-word .score {
+    position: absolute;
+    bottom: -20px;
+    font-size: 14px;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}
+
+

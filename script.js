@@ -1,27 +1,3 @@
-// List of 20 words with their manually set relation scores (example scores)
-
-const wordData = {
-    fire: 0.7,
-    heat: 0.8,
-    water: 0.6,
-    light: 0.9,
-    cold: 0.85,
-    warm: 0.75,
-    bright: 0.7,
-    summer: 0.65,
-    freeze: 0.8,
-    flame: 0.7,
-    day: 0.9,
-    night: 0.4,
-    rain: 0.5,
-    cloud: 0.45,
-    storm: 0.3,
-    wind: 0.4,
-    heatwave: 0.85,
-    glow: 0.75,
-    dew: 0.55,
-    shade: 0.35,
-};
 
 const wordData2D = {
     fire: {
@@ -135,10 +111,6 @@ const wordData2D = {
         wind: 0.4, heatwave: 0.2, glow: 0.3, dew: 0.5, shade: 0.4, ice: 0.6, sun: 0.1
     }
 }
-
-// List of 20 words with their manually set relation scores (example scores)
-
-//I start with a 2D array with similarity values between different words which I am not sending here for conciseness. 
 
 const resetBtn = document.getElementById("resetBtn");
 const modal = document.getElementById("scoreModal");

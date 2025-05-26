@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Semantic Stepper - Drag & Submit</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -29,8 +29,11 @@
             <div class="word end-word">sun</div>
         </div>
 
-        <button id="submitBtn" disabled>Submit</button>
-        <button id="retryBtn" disabled>Retry</button>
+        <!-- Buttons container with space-between so buttons align left and right -->
+        <div class="buttons-row">
+            <button id="submitBtn" disabled>Submit</button>
+            <button id="retryBtn" disabled>Retry</button>
+        </div>
 
         <div class="word-bank">
             <h3>Word Bank (drag to slots):</h3>

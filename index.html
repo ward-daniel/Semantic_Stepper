@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semantic Stepper</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semantic Stepper - Drag & Submit</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Semantic Stepper</h1>
+    <div class="container">
+        <h1 id="mainTitle">Stepper</h1>
+        <h2>Score: <span id="totalScore">0</span></h2>
 
-  <div class="game-container">
-    <p><strong>Target Word:</strong> <span id="target-word">happiness</span></p>
-    <p><strong>Current Word:</strong> <span id="current-word">joy</span></p>
+        <div class="word-row">
+            <div class="word start-word">ice</div>
+            <div class="arrow">→</div>
+            <div class="chain">
+                <div class="drop-slot" data-index="0"></div>
+                <div class="arrow">→</div>
+                <div class="drop-slot" data-index="1"></div>
+                <div class="arrow">→</div>
+                <div class="drop-slot" data-index="2"></div>
+                <div class="arrow">→</div>
+                <div class="drop-slot" data-index="3"></div>
+                <div class="arrow">→</div>
+                <div class="drop-slot" data-index="4"></div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="word end-word">sun</div>
+        </div>
 
-    <input type="text" id="guess-input" placeholder="Enter a related word..." />
-    <button id="submit-btn">Step</button>
+        <button id="submitBtn" disabled>Submit</button>
+        <button id="retryBtn" disabled>Retry</button>
 
-    <div id="feedback"></div>
+        <div class="word-bank">
+            <h3>Word Bank (drag to slots):</h3>
+            <div id="wordBankContainer"></div>
+        </div>
+    </div>
 
-    <h3>Chain</h3>
-    <ul id="chain-list"></ul>
-  </div>
+    <!-- Final Score Modal -->
+    <div id="scoreModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Final Score</h2>
+            <p id="finalScoreText"></p>
+        </div>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

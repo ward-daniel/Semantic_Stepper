@@ -136,6 +136,10 @@ const wordData2D = {
     }
 }
 
+// List of 20 words with their manually set relation scores (example scores)
+
+//I start with a 2D array with similarity values between different words which I am not sending here for conciseness. 
+
 const resetBtn = document.getElementById("resetBtn");
 const modal = document.getElementById("scoreModal");
 const closeBtn = document.querySelector(".close-btn");
@@ -400,6 +404,21 @@ function transformRetryToReset() {
     retryBtn.textContent = "Reset";
     retryBtn.onclick = () => location.reload();
 }
+function enableMobileDragFix() {
+    const draggableItems = document.querySelectorAll('.word-bank-item');
+    draggableItems.forEach(item => {
+        item.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+    });
+
+    const dropSlots = document.querySelectorAll('.drop-slot');
+    dropSlots.forEach(slot => {
+        slot.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+    });
+}
 
 // Initialization
 function init() {
@@ -424,6 +443,7 @@ function init() {
     wordBankContainer.innerHTML = "";
 
     createWordBank();
+    enableMobileDragFix();
     setupDropSlots();
     updateCurrentSlotHighlight();
     updateSubmitButton();

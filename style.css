@@ -161,6 +161,7 @@ h2 {
 
 #submitBtn,
 #retryBtn {
+    margin-left: -15px;
     padding: 10px 25px;
     font-size: 18px;
     font-weight: bold;
@@ -189,6 +190,7 @@ h2 {
 #retryBtn {
     background-color: #FF9E16;
     color: white;
+    margin-left: -15px;
 }
 
     #retryBtn:hover:not(:disabled) {
@@ -196,6 +198,7 @@ h2 {
     }
 
     #retryBtn:disabled {
+        margin-left: -15px;
         background-color: #dfe6e9;
         color: #888;
         cursor: not-allowed;
@@ -344,14 +347,13 @@ h2 {
         margin-bottom: 20px;
     }
 
-    /* Buttons remain horizontally aligned under first and last words */
     .buttons-row {
-        max-width: 1000px;
-        width: 100%;
-        padding: 0 15px;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        gap: 10px;
+        padding: 0; /* remove horizontal padding */
+        margin-left: -20px;
+        max-width: 100%; /* full width */
+        width: 100%; /* full width */
+        justify-content: space-between; /* keep buttons at edges */
+        gap: 10px; /* small gap between buttons */
     }
 }
 

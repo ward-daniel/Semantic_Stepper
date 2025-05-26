@@ -5,6 +5,8 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center horizontally */
 }
 
 .container {
@@ -17,12 +19,14 @@ h2 {
     font-weight: bold;
     font-size: 24px;
     user-select: none;
+    text-align: center;
+    color: #555;
 }
 
 .word-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* first and final word aligned left and right */
     margin-bottom: 20px;
     user-select: none;
 }
@@ -45,7 +49,14 @@ h2 {
 
 .end-word {
     background: #e67e22;
-    position: relative; /* ✅ make positioning of .score relative to this */
+    min-width: 80px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    cursor: default;
 }
 
 .chain {
@@ -54,6 +65,7 @@ h2 {
     gap: 10px;
     flex-grow: 1;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .drop-slot {
@@ -104,6 +116,7 @@ h2 {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 10px;
+    justify-content: center;
 }
 
 .word-bank-item {
@@ -120,22 +133,33 @@ h2 {
         cursor: grabbing;
     }
 
-#submitBtn {
+/* New container for buttons aligned horizontally */
+.buttons-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#submitBtn,
+#retryBtn {
     padding: 10px 25px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #3498db;
-    color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 20px;
-    user-select: none;
     transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+#submitBtn {
+    background-color: #3498db;
+    color: white;
 }
 
     #submitBtn:hover:not(:disabled) {
-        background-color: #0872F5
+        background-color: #0872F5;
     }
 
     #submitBtn:disabled {
@@ -144,19 +168,8 @@ h2 {
     }
 
 #retryBtn {
-    padding: 10px 25px;
-    font-size: 18px;
-    font-weight: bold;
     background-color: #FF9E16;
     color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: block;
-    margin-top: -60px;
-    margin-bottom: 60px;
-    margin-left: 900px;
-    transition: background-color 0.3s ease;
 }
 
     #retryBtn:hover:not(:disabled) {
@@ -175,11 +188,7 @@ h2 {
     text-align: center;
     margin-bottom: 10px;
     color: #2c3e50;
-}
-
-h2 {
-    text-align: center;
-    color: #555;
+    width: 100%;
 }
 
 #scoreModal {
@@ -225,8 +234,8 @@ h2 {
 }
 
 .word-bank-item.used {
-    background: #bdc3c7 !important; /* gray background */
-    color: #7f8c8d !important; /* lighter text */
+    background: #bdc3c7 !important;
+    color: #7f8c8d !important;
     cursor: not-allowed !important;
     opacity: 0.6;
 }
@@ -240,4 +249,108 @@ h2 {
     width: 100%;
 }
 
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
 
+    .word-row {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .drop-slot {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .word {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    .word-bank-item {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    #mainTitle {
+        font-size: 32px;
+    }
+
+    .modal-content h2 {
+        font-size: 32px;
+    }
+
+    #finalScoreText {
+        font-size: 28px;
+    }
+
+    .buttons-row {
+        display: flex;
+        justify-content: space-between; /* buttons align left & right */
+        margin-bottom: 20px;
+        max-width: 1000px; /* same max width as container */
+        width: 100%; /* full width inside container */
+        padding: 0 15px; /* optional padding to align better with words */
+    }
+
+    #submitBtn,
+    #retryBtn {
+        padding: 10px 25px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        user-select: none;
+        min-width: 120px; /* keep buttons similar width */
+    }
+
+    #submitBtn {
+        background-color: #3498db;
+        color: white;
+    }
+
+        #submitBtn:hover:not(:disabled) {
+            background-color: #0872F5;
+        }
+
+        #submitBtn:disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+        }
+
+    #retryBtn {
+        background-color: #FF9E16;
+        color: white;
+    }
+
+        #retryBtn:hover:not(:disabled) {
+            background-color: #FF6A00;
+        }
+
+        #retryBtn:disabled {
+            background-color: #dfe6e9;
+            color: #888;
+            cursor: not-allowed;
+        }
+
+    /* Responsive: stack buttons under each other on small screens */
+    @media (max-width: 768px) {
+        .buttons-row {
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            max-width: none;
+            width: auto;
+        }
+    }
+}

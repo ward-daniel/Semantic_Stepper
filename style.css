@@ -7,6 +7,8 @@ body {
     justify-content: center;
     flex-direction: column; /* Stack content vertically */
     align-items: center; /* Center horizontally */
+    -webkit-user-select: none; /* Prevent text selection on iOS */
+    -webkit-touch-callout: none; /* Disable callout menu on iOS */
 }
 
 .container {
@@ -41,6 +43,8 @@ h2 {
     text-align: center;
     min-width: 80px;
     cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .start-word {
@@ -57,6 +61,8 @@ h2 {
     text-align: center;
     color: white;
     cursor: default;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .chain {
@@ -81,6 +87,9 @@ h2 {
     color: #555;
     user-select: none;
     position: relative;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation; /* Improve touch interaction */
 }
 
     .drop-slot.current {
@@ -127,18 +136,23 @@ h2 {
     cursor: grab;
     user-select: none;
     font-weight: 600;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
 }
 
     .word-bank-item:active {
         cursor: grabbing;
     }
 
-/* New container for buttons aligned horizontally */
+/* Buttons container */
 .buttons-row {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    justify-content: space-between;
+    max-width: 1000px;
+    width: 100%;
     margin-bottom: 20px;
+    padding: 0 15px;
 }
 
 #submitBtn,
@@ -151,6 +165,7 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
+    min-width: 120px;
 }
 
 #submitBtn {
@@ -249,108 +264,83 @@ h2 {
     width: 100%;
 }
 
+/* Responsive: Wrap chain and adjust for phones, no vertical stacking */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
     .word-row {
-        flex-direction: column;
-        gap: 10px;
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 12px;
         align-items: center;
     }
 
-    .drop-slot {
-        width: 80%;
-        max-width: 300px;
-    }
-
-    .word {
+    .start-word, .end-word {
+        flex: 0 0 auto;
+        min-width: 80px;
+        max-width: 120px;
         font-size: 18px;
-        padding: 12px 20px;
+        padding: 12px 15px;
     }
 
-    .word-bank-item {
-        padding: 10px 15px;
-        font-size: 16px;
+    .chain {
+        display: flex;
+        flex-wrap: wrap; /* Wrap chain into multiple rows */
+        gap: 8px;
+        justify-content: center;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+
+    .drop-slot {
+        width: 100px;
+        height: 50px;
+        font-size: 18px;
+        padding: 8px;
+        cursor: pointer;
+        flex-shrink: 0;
     }
 
     .arrow {
-        display: none;
-    }
-
-    #mainTitle {
-        font-size: 32px;
-    }
-
-    .modal-content h2 {
-        font-size: 32px;
-    }
-
-    #finalScoreText {
-        font-size: 28px;
-    }
-
-    .buttons-row {
-        display: flex;
-        justify-content: space-between; /* buttons align left & right */
-        margin-bottom: 20px;
-        max-width: 1000px; /* same max width as container */
-        width: 100%; /* full width inside container */
-        padding: 0 15px; /* optional padding to align better with words */
+        font-size: 20px;
     }
 
     #submitBtn,
     #retryBtn {
         padding: 10px 25px;
         font-size: 18px;
-        font-weight: bold;
-        border: none;
+        min-width: 120px;
+    }
+
+    .word-bank-item {
+        padding: 14px 20px;
+        font-size: 17px;
         border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        user-select: none;
-        min-width: 120px; /* keep buttons similar width */
     }
 
-    #submitBtn {
-        background-color: #3498db;
-        color: white;
+    #mainTitle {
+        font-size: 32px;
+        margin-bottom: 20px;
     }
 
-        #submitBtn:hover:not(:disabled) {
-            background-color: #0872F5;
-        }
-
-        #submitBtn:disabled {
-            background-color: #bbb;
-            cursor: not-allowed;
-        }
-
-    #retryBtn {
-        background-color: #FF9E16;
-        color: white;
+    /* Keep buttons aligned left and right below words */
+    .buttons-row {
+        max-width: 1000px;
+        width: 100%;
+        padding: 0 15px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        gap: 10px;
     }
+}
 
-        #retryBtn:hover:not(:disabled) {
-            background-color: #FF6A00;
-        }
-
-        #retryBtn:disabled {
-            background-color: #dfe6e9;
-            color: #888;
-            cursor: not-allowed;
-        }
-
-    /* Responsive: stack buttons under each other on small screens */
-    @media (max-width: 768px) {
-        .buttons-row {
-            flex-direction: column;
-            gap: 10px;
-            padding: 0;
-            max-width: none;
-            width: auto;
-        }
+/* Extra touch improvements for iOS Safari */
+@supports (-webkit-overflow-scrolling: touch) {
+    body, .drop-slot, .word-bank-item {
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+        touch-action: manipulation;
     }
 }

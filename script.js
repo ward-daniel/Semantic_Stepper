@@ -825,7 +825,7 @@ function enableMobileDragFix() {
             e.preventDefault();
         }, { passive: false });
     });
-
+    
     const dropSlots = document.querySelectorAll('.drop-slot');
     dropSlots.forEach(slot => {
         slot.addEventListener('touchmove', (e) => {

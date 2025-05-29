@@ -1,25 +1,25 @@
 // List of 20 words with their manually set relation scores (example scores)
 
 const wordData = {
-    fruit: 0.1,
-    orchard: 0.3,
-    tree: 0.2,
-    wood: 0.6,
-    pencil: 0.9,
     banana: 0.2,
     farm: 0.4,
+    orchard: 0.3,
     forest: 0.5,
     paper: 0.9,
     write: 0.9,
     book: 0.9,
     leaves: 0.3,
+    wood: 0.6,
     garden: 0.2,
     bark: 0.7,
+    tree: 0.2,
     carpenter: 0.9,
     sketch: 0.8,
     novel: 0.8,
+    pencil: 0.9,
     desk: 0.8,
     harvest: 0.6,
+    fruit: 0.1,
     lumber: 0.5,
 };
 
@@ -103,7 +103,7 @@ const wordData2D = {
     apple: 0.1,         // perfect path backward connection (you can do symmetrical or not, I’ll make symmetrical)
     fruit: 0.1,
     orchard: 0.1,       // perfect path connection
-    tree: 0.7,
+    tree: 0.3,
     wood: 0.7,
     pencil: 0.9,
     banana: 0.3,
@@ -245,7 +245,7 @@ const wordData2D = {
   },
   tree: {
     apple: 0.7,
-    fruit: 0.7,
+    fruit: 0.3,
     orchard: 0.1,
     tree: 0.1,
     wood: 0.1,
